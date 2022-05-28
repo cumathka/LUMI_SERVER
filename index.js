@@ -32,3 +32,5 @@ app.use((err, req, res, next) => {
 app.listen(3000, ()=>{
     console.log("rest api server has benn just on port 3000 started!")
 });
+
+//app.listen //deneme burayi sil 
