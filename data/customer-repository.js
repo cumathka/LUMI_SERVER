@@ -28,4 +28,4 @@ export async function remove(pId){
     return await db.query(`DELETE FROM customer where id=${pId}`);
 }
 
-//----------------------
+//------
