@@ -27,3 +27,5 @@ export async function update(pId, pObj){
 export async function remove(pId){
     return await db.query(`DELETE FROM customer where id=${pId}`);
 }
+
+//deneme 
