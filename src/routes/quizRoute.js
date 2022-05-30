@@ -4,7 +4,7 @@ import quizService from '../services/quizService.js';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const quizList = await quizService.getCompanyList();
+  const quizList = await quizService.getQuizList();
   res.status(200).send(quizList);
 });
 
