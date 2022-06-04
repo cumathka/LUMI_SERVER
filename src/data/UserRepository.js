@@ -8,6 +8,14 @@ const getUserList = async () => {
   }
 };
 
+const getUser = async (pId) => {
+  try {
+    return await User.findByPk(pId);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const createUser = async (pUser) => {
   try {
     return await User.create(pUser);
@@ -21,6 +29,7 @@ const updateUser = async (pId, pUser) => {
     let User = await User.findByPk(pId);
     User.set({
       name: pUser.name,
+      email:pUser.email
     });
     return await User.save();
   } catch (error) {
@@ -42,6 +51,7 @@ const deleteUser = async (pId) => {
 
 export default {
   getUserList,
+  getUser,
   createUser,
   updateUser,
   deleteUser,
