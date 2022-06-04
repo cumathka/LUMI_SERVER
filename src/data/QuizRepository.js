@@ -1,4 +1,4 @@
-import Quiz from '../models/quizModel.js';
+import Quiz from '../models/QuizModal.js';
 
 const getQuizList = async () => {
   try {
@@ -20,11 +20,8 @@ const updateQuiz = async (pId, pQuiz) => {
   try {
     let Quiz = await Quiz.findByPk(pId);
     Quiz.set({
-      answer1: pQuiz.answer1,
-      answer2: pQuiz.answer2,
-      answer3: pQuiz.answer3,
-      answer4: pQuiz.answer4,
-      correct: pQuiz.correct,      
+      title: pQuiz.title,
+      description: pQuiz.description     
     });
     return await Quiz.save();
   } catch (error) {

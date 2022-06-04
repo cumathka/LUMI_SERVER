@@ -1,14 +1,17 @@
 import { Sequelize } from 'sequelize';
-import Quiz from '../models/quizModel.js';
-import User from '../models/userModel.js';
-
-const sequelize = new Sequelize('quiz_db', 'root', '-', {
+import Quiz from '../models/QuizModal.js';
+import User from '../models/UserModal.js';
+import Question from '../models/QuestionModal.js';
+const sequelize = new Sequelize('QuizNewDb', 'root', '-', {
   host: 'localhost',
   dialect: 'mysql',
 });
 
-Quiz.hasMany(User);
-User.belongsTo(Quiz);
+User.hasMany(Quiz);
+Quiz.hasMany(Question);
+Question.belongsTo(Quiz);
+Quiz.belongsTo(User);
+
 
 const connectToDatabase = async () => {
   try {
@@ -16,9 +19,10 @@ const connectToDatabase = async () => {
     await sequelize.sync({ force: true })
     await Quiz.sync();
     await User.sync();
+    await Question.sync();
     console.log('Connected database!');
   } catch (error) {
-    console.log('Error');
+    console.log('Database baglanmadi---Error');
   }
 };
 

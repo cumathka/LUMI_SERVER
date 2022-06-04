@@ -1,22 +1,22 @@
 import { Sequelize, DataTypes } from 'sequelize';
 
-const sequelize = new Sequelize('quiz_db', 'root', '-', {
+const sequelize = new Sequelize('QuizNewDb', 'root', '-', {
   host: 'localhost',
   dialect: 'mysql',
 });
 
 const User = sequelize.define('User', {
-  first_name: {
-    type: DataTypes.STRING,
+  id: {
+    type: DataTypes.INTEGER,
     allowNull: false,
+    primaryKey: true,
+    autoIncrement: true
   },
-  last_name: {
-    type: DataTypes.STRING,
-    allowNull: false,
+  name: {
+    type: DataTypes.STRING
   },
   email: {
-    type: DataTypes.STRING,
-    allowNull: false,
+    type: DataTypes.STRING
   }
 });
 
