@@ -1,6 +1,6 @@
-import User from '../models/UserModal.js';
+import User from '../models/UserModel.js';
 
-const getUsers = async () => {
+const getUserList = async () => {
   try {
     return await User.findAll();
   } catch (error) {
@@ -21,7 +21,6 @@ const updateUser = async (pId, pUser) => {
     let User = await User.findByPk(pId);
     User.set({
       name: pUser.name,
-      email: pUser.email     
     });
     return await User.save();
   } catch (error) {
@@ -42,7 +41,7 @@ const deleteUser = async (pId) => {
 };
 
 export default {
-  getUsers,
+  getUserList,
   createUser,
   updateUser,
   deleteUser,

@@ -4,7 +4,7 @@ import UserService from '../services/UserService.js';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const UserList = await UserService.getUsers();
+  const UserList = await UserService.getUserList();
   res.status(200).send(UserList);
 });
 
