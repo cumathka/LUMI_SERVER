@@ -1,7 +1,7 @@
 import UserRepository from '../data/UserRepository.js';
 
-const getUsers = async () => {
-  const UserList = await UserRepository.getUsers();
+const getUserList = async () => {
+  const UserList = await UserRepository.getUserList();
   return UserList;
 };
 
@@ -10,7 +10,7 @@ const createUser = async (pUser) => {
 };
 
 const updateUser = async (pId, pUser) => {
-  return await UserRepository.updateQuiz(pId, pUser);
+  return await UserRepository.updateUser(pId, pUser);
 };
 
 const deleteUser = async (pId) => {
@@ -18,7 +18,7 @@ const deleteUser = async (pId) => {
 };
 
 export default {
-  getUsers,
+  getUserList,
   createUser,
   updateUser,
   deleteUser,
