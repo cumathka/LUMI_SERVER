@@ -1,4 +1,4 @@
-import quizRepository from '../data/quizRepository.js';
+import quizRepository from '../data/QuizRepository.js';
 
 const getQuizList = async () => {
   const quizList = await quizRepository.getQuizList();
