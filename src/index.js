@@ -3,7 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import UserRoute from './routes/UserRoute.js';
 import QuizRoute from './routes/QuizRoute.js';
-import QuestionRoute from './models/QuestionModal.js';
+import QuestionRoute from "./routes/QuestionRoute.js"
+
 import './commons/sequelize.js';
 
 const app = express();
