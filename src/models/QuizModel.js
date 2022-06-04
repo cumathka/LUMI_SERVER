@@ -16,7 +16,11 @@ const Quiz = sequelize.define('Quiz', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  description: {
+  details: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  category: {
     type: DataTypes.STRING,
     allowNull: false
   },

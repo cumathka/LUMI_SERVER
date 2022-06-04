@@ -5,6 +5,11 @@ const getUserList = async () => {
   return UserList;
 };
 
+const getUser = async (pId) => {
+  const User = await UserRepository.getUser(pId);
+  return User;
+};
+
 const createUser = async (pUser) => {
   return await UserRepository.createUser(pUser);
 };
@@ -22,4 +27,5 @@ export default {
   createUser,
   updateUser,
   deleteUser,
+  getUser,
 };

@@ -8,6 +8,12 @@ router.get('/', async (req, res) => {
   res.status(200).send(UserList);
 });
 
+router.get('/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  const User = await UserService.getUser(id);
+  res.status(200).send(User);
+});
+
 router.post('/', async (req, res) => {
   const User = await UserService.createUser(req.body);
   res.status(201).send(User);
