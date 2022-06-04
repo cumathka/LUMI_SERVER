@@ -9,10 +9,8 @@ const sequelize = new Sequelize('my_db', 'root', '-', {
 });
 
 user.hasMany(quiz);
-user.hasMany(question);
 quiz.hasMany(question);
 quiz.belongsTo(user);
-question.belongsTo(user);
 question.belongsTo(quiz);
 
 const connectToDatabase = async () => {
