@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import user from '../models/UserModel.js';
 import quiz from '../models/QuizModel.js';
-import question from "../models/QuestionsModal.js"
+import question from "../models/QuestionModal.js"
 
 const sequelize = new Sequelize('my_db', 'root', '-', {
   host: 'localhost',
