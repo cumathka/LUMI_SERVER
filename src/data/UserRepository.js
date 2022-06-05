@@ -24,12 +24,11 @@ const createUser = async (pUser) => {
   }
 };
 
-const updateUser = async (pId, pUser) => {
+const updateUser= async (pId, pUser) => {
   try {
-    let User = await User.findByPk(pId);
-    User.set({
-      name: pUser.name,
-      email:pUser.email
+
+    return await User.update(pUser, {
+      where: {id: pId}
     });
     return await User.save();
   } catch (error) {

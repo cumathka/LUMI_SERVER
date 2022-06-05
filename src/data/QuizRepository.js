@@ -24,13 +24,11 @@ const createQuiz = async (pQuiz) => {
   }
 };
 
-const updateQuiz = async (pId, pQuiz) => {
+const updateQuiz= async (pId, pQuiz) => {
   try {
-    let Quiz = await Quiz.findByPk(pId);
-    Quiz.set({
-      title: pQuiz.title,
-      details:pQuiz.details,
-      category:pQuiz.category
+
+    return await Quiz.update(pQuiz, {
+      where: {id: pId}
     });
     return await Quiz.save();
   } catch (error) {
