@@ -12,6 +12,10 @@ const sequelize = new Sequelize('my_db', 'root', '-', {
         primaryKey: true,
         autoIncrement: true
       },
+    question: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
      answer1: {
       type: DataTypes.STRING,
       allowNull: false,

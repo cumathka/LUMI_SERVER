@@ -26,14 +26,19 @@ const createQuestion = async (pQuestion) => {
 
 const updateQuestion = async (pId, pQuestion) => {
   try {
-    let Question = await Question.findByPk(pId);
-    Question.set({
-      answer1: pQuestion.answer1,
-      answer2: pQuestion.answer2,
-      answer3: pQuestion.answer3,
-      answer4: pQuestion.answer4,
-      correct: pQuestion.correct
+
+    return await Question.update(pQuestion, {
+      where: {id: pId}
     });
+    // let Question = await Question.findByPk(pId);
+    // Question.update({
+    //   answer1: pQuestion.answer1,
+    //   answer2: pQuestion.answer2,
+    //   answer3: pQuestion.answer3,
+    //   answer4: pQuestion.answer4,
+    //   correct: pQuestion.correct,
+    //   question:pQuestion.question
+    // });
     return await Question.save();
   } catch (error) {
     console.log(error);
