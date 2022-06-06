@@ -3,9 +3,9 @@ import user from '../models/UserModel.js';
 import quiz from '../models/QuizModel.js';
 import question from "../models/QuestionModal.js"
 
-const sequelize = new Sequelize('my_db', 'root', '-', {
-  host: 'localhost',
-  dialect: 'mysql',
+const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+  host:process.env.DB_HOST,
+  dialect: process.env.DB_DIALECT,
 });
 
 user.hasMany(quiz);

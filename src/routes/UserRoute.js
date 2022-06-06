@@ -32,4 +32,30 @@ router.delete('/:id', async (req, res) => {
   res.status(200).send('Deleted!');
 });
 
+
+router.post("/reminder", async (req, res)=>{
+  await UserService.sendReminderEmail()
+  res.status(200).send(null);
+})
+
+
+router.post("/check", async (req, res)=>{
+  const auth0User = req.body;
+  const user = {
+      email: auth0User.email,
+      first_name: auth0User.given_name,
+      last_name: auth0User.family_name 
+  };
+
+  const status = await UserService.checkUser(user); // firstname, lastname, email
+  res.status(200).send(status);
+})
+
+
+
+
+
+
 export default router;
+
+

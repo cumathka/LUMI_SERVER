@@ -6,7 +6,7 @@ import QuizRoute from './routes/QuizRoute.js';
 import QuestionRoute from "./routes/QuestionRoute.js"
 
 import './commons/sequelize.js';
-
+import 'dotenv/config'
 const app = express();
 const port = 8080;
 

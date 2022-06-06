@@ -1,5 +1,15 @@
 import User from '../models/UserModel.js';
 
+
+
+const  isUserExisting = async (pEmail) => {
+  const emailCount = await User.count({
+      where: {email: pEmail}
+    });
+  return emailCount == 0 ? false : true;
+}
+
+
 const getUserList = async () => {
   try {
     return await User.findAll();
@@ -30,7 +40,7 @@ const updateUser= async (pId, pUser) => {
     return await User.update(pUser, {
       where: {id: pId}
     });
-    return await User.save();
+    // return await User.save();
   } catch (error) {
     console.log(error);
   }
@@ -54,4 +64,5 @@ export default {
   createUser,
   updateUser,
   deleteUser,
+  isUserExisting
 };
