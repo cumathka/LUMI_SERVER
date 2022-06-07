@@ -1,5 +1,5 @@
 import QuizRepository from '../data/QuizRepository.js';
-
+import UserRepository from '../data/UserRepository.js';
 const getQuizList = async () => {
   const QuizList = await QuizRepository.getQuizList();
   return QuizList;
@@ -11,7 +11,13 @@ const getQuiz = async (pId) => {
 };
 
 const createQuiz = async (pQuiz) => {
-  return await QuizRepository.createQuiz(pQuiz);
+  /////bunu ilk yaptik
+  const currentUser = await UserRepository.getUser(pQuiz.userIdUserDB)
+  console.log("currentUser",currentUser)
+  // return await QuizRepository.createQuiz(pQuiz);
+  const createdQuiz = await QuizRepository.createQuiz(pQuiz);
+  currentUser.addQuiz(createdQuiz)
+  return await createdQuiz
 };
 
 const updateQuiz = async (pId, pQuiz) => {

@@ -16,7 +16,7 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
         type: DataTypes.STRING,
         allowNull: false,
       },
-     answer1: {
+    answer1: {
       type: DataTypes.STRING,
       allowNull: false,
     },

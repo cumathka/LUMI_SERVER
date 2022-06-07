@@ -30,7 +30,7 @@ const updateQuiz= async (pId, pQuiz) => {
     return await Quiz.update(pQuiz, {
       where: {id: pId}
     });
-    return await Quiz.save();
+    // return await Quiz.save();
   } catch (error) {
     console.log(error);
   }
@@ -47,6 +47,13 @@ const deleteQuiz = async (pId) => {
     console.log(error);
   }
 };
+
+
+
+
+
+
+
 
 export default {
   getQuizList,

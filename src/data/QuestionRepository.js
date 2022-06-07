@@ -39,7 +39,7 @@ const updateQuestion = async (pId, pQuestion) => {
     //   correct: pQuestion.correct,
     //   question:pQuestion.question
     // });
-    return await Question.save();
+    // return await Question.save();
   } catch (error) {
     console.log(error);
   }

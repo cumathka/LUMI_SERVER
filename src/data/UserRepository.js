@@ -26,6 +26,8 @@ const getUser = async (pId) => {
   }
 };
 
+
+
 const createUser = async (pUser) => {
   try {
     return await User.create(pUser);
@@ -58,11 +60,33 @@ const deleteUser = async (pId) => {
   }
 };
 
+
+
+
+const  getUserByMail = async (pEmail) => {
+  const userId = await User.findOne({
+      where: {email: pEmail}
+    });
+    console.log(userId);
+  return await userId.id
+}
+
+
+
+
+
+
+
+
+
+
+
 export default {
   getUserList,
   getUser,
   createUser,
   updateUser,
   deleteUser,
-  isUserExisting
+  isUserExisting,
+  getUserByMail
 };

@@ -49,8 +49,12 @@ const  checkUser =async (pUser) => {
   // if the user is not existing then create the user in the db
   const isUserExisting = await UserRepository.isUserExisting(pUser.email)
   if(isUserExisting){
+    const userId = await UserRepository.getUserByMail(pUser.email)
+    console.log(userId,"res")
       return {
           permitted: true,
+          userId:userId
+         
           //role: "CUSTOMER"
       }
   }else{
@@ -59,7 +63,7 @@ const  checkUser =async (pUser) => {
       const message = populateRemidnerTemplate(user.first_name ,user.last_name);
       emailService.send(user.email,"welcome",message)
       return {
-          permitted: false,
+          permitted: true,
           //role: "CUSTOMER"
       }
   }
