@@ -12,11 +12,15 @@ const getQuiz = async (pId) => {
 
 const createQuiz = async (pQuiz) => {
   /////bunu ilk yaptik
-  const currentUser = await UserRepository.getUser(pQuiz.userIdUserDB)
-  console.log("currentUser",currentUser)
+  const currentUser = await UserRepository.getUser(pQuiz.userIdUserDB) //21
+  // console.log("currentUser",currentUser)
   // return await QuizRepository.createQuiz(pQuiz);
   const createdQuiz = await QuizRepository.createQuiz(pQuiz);
   currentUser.addQuiz(createdQuiz)
+
+///quiz id yi buradan almaya calisiyorum
+  const quizId = await  QuizRepository.getQuizId(pQuiz)
+  // console.log("quiz servis",createdQuiz)
   return await createdQuiz
 };
 

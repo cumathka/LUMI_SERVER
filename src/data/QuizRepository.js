@@ -50,8 +50,17 @@ const deleteQuiz = async (pId) => {
 
 
 
-
-
+const  getQuizId = async (pQuiz) => {
+  const quizId = await Quiz.findOne({
+      where: {
+        title: pQuiz.title,
+        details:pQuiz.details,
+        category:pQuiz.category,
+      }
+    });
+    console.log( quizId.id ,"quiz idsi bu")
+  return await quizId.id
+}
 
 
 
@@ -61,4 +70,5 @@ export default {
   createQuiz,
   updateQuiz,
   deleteQuiz,
+  getQuizId
 };

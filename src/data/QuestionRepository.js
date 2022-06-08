@@ -1,6 +1,20 @@
 import Question from '../models/QuestionModal.js';
 
-const getQuestionList = async () => {
+const getQuestionList = async (QuizId) => {
+  try {
+    return await Question.findAll({
+      where:{
+        QuizId:QuizId
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+const getAllQuestions = async () => {
   try {
     return await Question.findAll();
   } catch (error) {
@@ -63,4 +77,5 @@ export default {
   createQuestion,
   updateQuestion,
   deleteQuestion,
+  getAllQuestions
 };

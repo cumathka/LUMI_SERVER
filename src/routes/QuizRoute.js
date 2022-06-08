@@ -16,6 +16,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const Quiz = await QuizService.createQuiz(req.body);
+  console.log("quiz geldi =>>>>>>>", Quiz)
   res.status(201).send(Quiz);
 });
 

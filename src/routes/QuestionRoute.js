@@ -3,8 +3,15 @@ import QuestionService from '../services/QuestionService.js';
 
 const router = express.Router();
 
+router.get('/questions', async (req, res) => {
+  const QuizId = req.query.QuizId
+  console.log(QuizId,"hacim id bu")
+  const QuestionList = await QuestionService.getQuestionList(QuizId);
+  res.status(200).send(QuestionList);
+});
+
 router.get('/', async (req, res) => {
-  const QuestionList = await QuestionService.getQuestionList();
+  const QuestionList = await QuestionService.getAllQuestions();
   res.status(200).send(QuestionList);
 });
 
