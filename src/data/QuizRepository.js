@@ -61,7 +61,21 @@ const  getQuizId = async (pQuiz) => {
     console.log( quizId.id ,"quiz idsi bu")
   return await quizId.id
 }
+const getMyQuizzes = async (UserId,limit,offset) => {
+  try {
+    const MyQuizzes = await Quiz.findAll({
+      where: {
+        UserId: UserId.UserId,
+      },
+      limit:limit,
+      offset:offset
+    });
+    return  MyQuizzes
+  } catch (error) {
+    console.log(error);
+  }
 
+};
 
 
 export default {
@@ -70,5 +84,6 @@ export default {
   createQuiz,
   updateQuiz,
   deleteQuiz,
-  getQuizId
+  getQuizId,
+  getMyQuizzes
 };

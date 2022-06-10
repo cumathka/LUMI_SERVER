@@ -32,10 +32,18 @@ const deleteQuiz = async (pId) => {
   await QuizRepository.deleteQuiz(pId);
 };
 
+const getMyQuizzes = async (UserId,limit,offset) => {
+  
+  const myQuiz = await QuizRepository.getMyQuizzes(UserId,limit,offset)
+  return myQuiz;
+};
+
+
 export default {
   getQuizList,
   createQuiz,
   updateQuiz,
   deleteQuiz,
   getQuiz,
+  getMyQuizzes
 };

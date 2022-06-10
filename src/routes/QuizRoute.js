@@ -7,6 +7,17 @@ router.get('/', async (req, res) => {
   const QuizList = await QuizService.getQuizList();
   res.status(200).send(QuizList);
 });
+router.get('/myQuizzes', async (req, res) => {
+  const UserId = req.query 
+  const limit = Number(req.query.limit)
+  const offset =  Number(req.query.offset)
+  console.log(offset,limit)
+  console.log("user ID",UserId)
+  console.log(typeof UserId)
+  const myQuizzes = await QuizService.getMyQuizzes(UserId,limit,offset);
+  res.status(200).send(myQuizzes);
+});
+
 
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id);
