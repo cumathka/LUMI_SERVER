@@ -50,9 +50,32 @@ const deleteQuiz = async (pId) => {
 
 
 
+const  getQuizId = async (pQuiz) => {
+  const quizId = await Quiz.findOne({
+      where: {
+        title: pQuiz.title,
+        details:pQuiz.details,
+        category:pQuiz.category,
+      }
+    });
+    console.log( quizId.id ,"quiz idsi bu")
+  return await quizId.id
+}
+const getMyQuizzes = async (UserId,limit,offset) => {
+  try {
+    const MyQuizzes = await Quiz.findAll({
+      where: {
+        UserId: UserId.UserId,
+      },
+      limit:limit,
+      offset:offset
+    });
+    return  MyQuizzes
+  } catch (error) {
+    console.log(error);
+  }
 
-
-
+};
 
 
 export default {
@@ -61,4 +84,6 @@ export default {
   createQuiz,
   updateQuiz,
   deleteQuiz,
+  getQuizId,
+  getMyQuizzes
 };

@@ -54,7 +54,7 @@ const  checkUser =async (pUser) => {
       return {
           permitted: true,
           userId:userId
-         
+        
           //role: "CUSTOMER"
       }
   }else{
