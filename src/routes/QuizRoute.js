@@ -3,18 +3,29 @@ import QuizService from '../services/QuizService.js';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
-  const QuizList = await QuizService.getQuizList();
+router.get('/allQuizzes', async (req, res) => {
+  const userInp = req.query.userInp
+  const category = req.query.category
+  const sortBy = req.query.sortBy
+  const limit = Number(req.query.limit)  
+  const offset =  Number(req.query.offset)  
+  const QuizList = await QuizService.getQuizList(limit,offset,sortBy,category,userInp);
+  res.status(200).send(QuizList);
+});
+router.get('/postman', async (req, res) => {
+
+  const QuizList = await QuizService.getForPostMan();
   res.status(200).send(QuizList);
 });
 router.get('/myQuizzes', async (req, res) => {
-  const UserId = req.query 
-  const limit = Number(req.query.limit)
-  const offset =  Number(req.query.offset)
+  const userInp = req.query.userInp
+  const UserId = req.query  
+  const limit = Number(req.query.limit) 
+  const offset =  Number(req.query.offset) 
   console.log(offset,limit)
   console.log("user ID",UserId)
   console.log(typeof UserId)
-  const myQuizzes = await QuizService.getMyQuizzes(UserId,limit,offset);
+  const myQuizzes = await QuizService.getMyQuizzes(UserId,limit,offset,userInp);
   res.status(200).send(myQuizzes);
 });
 

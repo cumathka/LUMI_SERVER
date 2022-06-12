@@ -1,12 +1,51 @@
+import { Op } from "sequelize";
 import Quiz from '../models/QuizModel.js';
 
-const getQuizList = async () => {
+const getQuizList = async (limit,offset,sortBy,userInp) => {
   try {
-    return await Quiz.findAll();
+    const quizList = Quiz.findAll({
+      limit:limit,
+      offset:offset,
+      order: [['updatedAt', sortBy]],
+      where:{  ////buraya bakim gerekebilir
+        title:{[Op.like]: '%' + userInp + '%' }
+      }
+    });
+    return quizList
   } catch (error) {
     console.log(error);
   }
 };
+
+const getQuizListWithSameCategory = async (limit,offset,sortBy,category,userInp) => {
+  try {
+    const quizList = Quiz.findAll({
+      limit:limit,
+      offset:offset,
+      order: [['updatedAt', sortBy]],
+      where:{
+        category: category,
+        title:{[Op.like]: '%' + userInp + '%' }
+      }
+    });
+    return quizList
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+
+
+
+const getForPostMan = async () => {
+  try {
+    const quizList = Quiz.findAll();
+    return quizList
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 const getQuiz = async (pId) => {
   try {
@@ -36,20 +75,30 @@ const updateQuiz= async (pId, pQuiz) => {
   }
 };
 
-const deleteQuiz = async (pId) => {
-  try {
-    await Quiz.destroy({
-      where: {
-        id: pId,
-      },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+// bu benim
+// const deleteQuiz = async (pId) => {
+//   try {
+//     await Quiz.destroy({
+//       where: {
+//         id: pId,
+//       },
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+
+// mehmet abi bunu atti
 
 
-
+const deleteQuiz = async (pId) =>{ 
+  const quiz = await Quiz.findOne({
+  where: {
+    id: pId,
+  },
+  });
+  await quiz.destroy();
+}
 const  getQuizId = async (pQuiz) => {
   const quizId = await Quiz.findOne({
       where: {
@@ -61,11 +110,12 @@ const  getQuizId = async (pQuiz) => {
     console.log( quizId.id ,"quiz idsi bu")
   return await quizId.id
 }
-const getMyQuizzes = async (UserId,limit,offset) => {
+const getMyQuizzes = async (UserId,limit,offset,userInp) => {
   try {
     const MyQuizzes = await Quiz.findAll({
       where: {
         UserId: UserId.UserId,
+        title:{[Op.like]: '%' + userInp + '%' }
       },
       limit:limit,
       offset:offset
@@ -85,5 +135,7 @@ export default {
   updateQuiz,
   deleteQuiz,
   getQuizId,
-  getMyQuizzes
+  getMyQuizzes,
+  getQuizListWithSameCategory,
+  getForPostMan
 };

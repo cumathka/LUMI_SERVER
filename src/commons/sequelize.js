@@ -9,7 +9,7 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
 });
 
 user.hasMany(quiz);
-quiz.hasMany(question);
+quiz.hasMany(question,{onDelete:'cascade'});
 quiz.belongsTo(user);
 question.belongsTo(quiz);
 

@@ -63,7 +63,7 @@ const  checkUser =async (pUser) => {
       const message = populateRemidnerTemplate(user.first_name ,user.last_name);
       emailService.send(user.email,"welcome",message)
       return {
-          permitted: true,
+          permitted: false,
           //role: "CUSTOMER"
       }
   }
