@@ -29,14 +29,16 @@ const getForPostMan = async () => {
 
 
 const createQuiz = async (pQuiz) => {
+  console.log(pQuiz,'pquiz budur')
   /////bunu ilk yaptik
   const currentUser = await UserRepository.getUser(pQuiz.userIdUserDB) //21
+  const userProfilePic = await UserRepository.getUserProfilePic(pQuiz.userIdUserDB) //21
+  console.log('current quiz avatri' ,userProfilePic)
   // console.log("currentUser",currentUser)
   // return await QuizRepository.createQuiz(pQuiz);
   const createdQuiz = await QuizRepository.createQuiz(pQuiz);
   currentUser.addQuiz(createdQuiz)
-
-///quiz id yi buradan almaya calisiyorum
+///quiz id yi buradan almaya calisiyoum
   const quizId = await  QuizRepository.getQuizId(pQuiz)
   // console.log("quiz servis",createdQuiz)
   return await createdQuiz

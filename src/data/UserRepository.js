@@ -26,6 +26,17 @@ const getUser = async (pId) => {
   }
 };
 
+const getUserProfilePic = async (pId) => {
+  try {
+    const userPic = await User.findOne({
+      where: {id: pId}
+    });
+    return await userPic.avatar
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 
 const createUser = async (pUser) => {
@@ -88,5 +99,6 @@ export default {
   updateUser,
   deleteUser,
   isUserExisting,
-  getUserByMail
+  getUserByMail,
+  getUserProfilePic
 };

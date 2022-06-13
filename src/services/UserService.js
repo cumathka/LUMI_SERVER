@@ -38,7 +38,7 @@ const sendReminderEmail = async() => {
 
     const title = "Reminder";
     const message = populateRemidnerTemplate("cuma" ,"kaya");
-    emailService.send("cumakaya2531@gmail.com", title, message);
+    emailService.send("halilkom180@gmail.com", title, message);
 
 }
 

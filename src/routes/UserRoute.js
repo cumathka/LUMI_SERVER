@@ -41,12 +41,15 @@ router.post("/reminder", async (req, res)=>{
 
 router.post("/check", async (req, res)=>{
   const auth0User = req.body;
+  // const avatar = `https://avatars.dicebear.com/api/adventurer-neutral/${user.first_name}.svg`
+ 
   const user = {
       email: auth0User.email,
       first_name: auth0User.given_name,
-      last_name: auth0User.family_name 
+      last_name: auth0User.family_name ,
+      avatar:auth0User.picture
   };
-
+  // avatar:`https://avatars.dicebear.com/api/adventurer-neutral/${auth0User.given_name}.svg`
   const status = await UserService.checkUser(user); // firstname, lastname, email
   res.status(200).send(status);
 })

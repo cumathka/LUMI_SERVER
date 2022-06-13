@@ -1,4 +1,5 @@
 import { Op } from "sequelize";
+import Question from "../models/QuestionModal.js";
 import Quiz from '../models/QuizModel.js';
 
 const getQuizList = async (limit,offset,sortBy,userInp) => {
@@ -33,10 +34,6 @@ const getQuizListWithSameCategory = async (limit,offset,sortBy,category,userInp)
     console.log(error);
   }
 };
-
-
-
-
 const getForPostMan = async () => {
   try {
     const quizList = Quiz.findAll();
@@ -45,8 +42,6 @@ const getForPostMan = async () => {
     console.log(error);
   }
 };
-
-
 const getQuiz = async (pId) => {
   try {
     return await Quiz.findByPk(pId);
@@ -54,7 +49,6 @@ const getQuiz = async (pId) => {
     console.log(error);
   }
 };
-
 const createQuiz = async (pQuiz) => {
   try {
     return await Quiz.create(pQuiz);
@@ -62,10 +56,8 @@ const createQuiz = async (pQuiz) => {
     console.log(error);
   }
 };
-
 const updateQuiz= async (pId, pQuiz) => {
   try {
-
     return await Quiz.update(pQuiz, {
       where: {id: pId}
     });
@@ -74,29 +66,17 @@ const updateQuiz= async (pId, pQuiz) => {
     console.log(error);
   }
 };
-
-// bu benim
-// const deleteQuiz = async (pId) => {
-//   try {
-//     await Quiz.destroy({
-//       where: {
-//         id: pId,
-//       },
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
-
-// mehmet abi bunu atti
-
-
 const deleteQuiz = async (pId) =>{ 
   const quiz = await Quiz.findOne({
   where: {
     id: pId,
   },
   });
+   await Question.destroy({
+    where: {
+      QuizId: pId,
+    },
+    });
   await quiz.destroy();
 }
 const  getQuizId = async (pQuiz) => {
@@ -124,10 +104,7 @@ const getMyQuizzes = async (UserId,limit,offset,userInp) => {
   } catch (error) {
     console.log(error);
   }
-
 };
-
-
 export default {
   getQuizList,
   getQuiz,

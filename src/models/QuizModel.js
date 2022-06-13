@@ -4,7 +4,6 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
   host:process.env.DB_HOST,
   dialect: process.env.DB_DIALECT,
 });
-
 const Quiz = sequelize.define('Quiz', {
   id: {
     type: DataTypes.INTEGER,
@@ -25,5 +24,4 @@ const Quiz = sequelize.define('Quiz', {
     allowNull: false
   },
 });
-
 export default Quiz;

@@ -7,7 +7,7 @@ const gmailTransporter = nodemailer.createTransport({
         // not forget to adjust less secure app property 
         // visit the page https://www.google.com/settings/security/lesssecureapps
         user: 'hicoders.smtp@gmail.com', 
-        pass: 'pugqaerqogacdfxq?'
+        pass:''
     }
 });
 
