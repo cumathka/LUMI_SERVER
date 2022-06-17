@@ -4,7 +4,6 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
   host:process.env.DB_HOST,
   dialect: process.env.DB_DIALECT,
 });
-
 const Quiz = sequelize.define('Quiz', {
   id: {
     type: DataTypes.INTEGER,
@@ -13,17 +12,20 @@ const Quiz = sequelize.define('Quiz', {
     autoIncrement: true
   },
   title: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   details: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   category: {
+    type: DataTypes.STRING(100),
+    allowNull: false
+  },
+  userAvatar: {
     type: DataTypes.STRING,
     allowNull: false
   },
 });
-
 export default Quiz;

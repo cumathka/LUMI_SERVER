@@ -38,7 +38,7 @@ const sendReminderEmail = async() => {
 
     const title = "Reminder";
     const message = populateRemidnerTemplate("cuma" ,"kaya");
-    emailService.send("cumakaya2531@gmail.com", title, message);
+    emailService.send("halilkom180@gmail.com", title, message);
 
 }
 
@@ -63,7 +63,7 @@ const  checkUser =async (pUser) => {
       const message = populateRemidnerTemplate(user.first_name ,user.last_name);
       emailService.send(user.email,"welcome",message)
       return {
-          permitted: true,
+          permitted: false,
           //role: "CUSTOMER"
       }
   }

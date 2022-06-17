@@ -4,7 +4,6 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USERNAME
   host:process.env.DB_HOST,
   dialect: process.env.DB_DIALECT,
 });
-
 const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
@@ -21,6 +20,8 @@ const User = sequelize.define('User', {
   email: {
     type: DataTypes.STRING
   },
+  avatar: {
+    type: DataTypes.STRING
+  },
 });
-
 export default User;

@@ -1,5 +1,4 @@
 import Question from '../models/QuestionModal.js';
-
 const getQuestionList = async (QuizId) => {
   try {
     return await Question.findAll({
@@ -11,9 +10,6 @@ const getQuestionList = async (QuizId) => {
     console.log(error);
   }
 };
-
-
-
 const getAllQuestions = async () => {
   try {
     return await Question.findAll();
@@ -21,7 +17,6 @@ const getAllQuestions = async () => {
     console.log(error);
   }
 };
-
 const getQuestion = async (pId) => {
   try {
     return await Question.findByPk(pId);
@@ -58,7 +53,6 @@ const updateQuestion = async (pId, pQuestion) => {
     console.log(error);
   }
 };
-
 const deleteQuestion = async (pId) => {
   try {
     await Question.destroy({

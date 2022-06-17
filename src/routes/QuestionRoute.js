@@ -39,4 +39,9 @@ router.delete('/:id', async (req, res) => {
   res.status(200).send('Deleted!');
 });
 
+// router.delete('/deleteAll/:id', async (req, res) => {
+//   const id = Number(req.params.id);
+//   await QuestionService.delete(id);
+//   res.status(200).send('Deleted!');
+// });
 export default router;
