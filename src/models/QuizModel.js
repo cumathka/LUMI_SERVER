@@ -12,14 +12,18 @@ const Quiz = sequelize.define('Quiz', {
     autoIncrement: true
   },
   title: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   details: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING(100),
     allowNull: false
   },
   category: {
+    type: DataTypes.STRING(100),
+    allowNull: false
+  },
+  userAvatar: {
     type: DataTypes.STRING,
     allowNull: false
   },
