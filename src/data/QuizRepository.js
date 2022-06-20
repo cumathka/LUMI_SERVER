@@ -53,7 +53,7 @@ const createQuiz = async (pQuiz) => {
   try {
     return await Quiz.create(pQuiz);
   } catch (error) {
-    console.log(error);
+    console.log(error,"olusmadi quiz");
   }
 };
 const updateQuiz= async (pId, pQuiz) => {
@@ -87,7 +87,7 @@ const  getQuizId = async (pQuiz) => {
         category:pQuiz.category,
       }
     });
-    console.log( quizId.id ,"quiz idsi bu")
+    // console.log( quizId.id ,"quiz idsi bu")
   return await quizId.id
 }
 const getMyQuizzes = async (UserId,limit,offset,userInp) => {
