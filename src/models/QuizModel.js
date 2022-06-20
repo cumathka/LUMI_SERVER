@@ -27,5 +27,9 @@ const Quiz = sequelize.define('Quiz', {
     type: DataTypes.STRING,
     allowNull: false
   },
+  durationValue: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
 });
 export default Quiz;

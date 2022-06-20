@@ -39,7 +39,7 @@ const createQuiz = async (pQuiz) => {
   const createdQuiz = await QuizRepository.createQuiz(pQuiz);
   currentUser.addQuiz(createdQuiz)
 ///quiz id yi buradan almaya calisiyoum
-  const quizId = await  QuizRepository.getQuizId(pQuiz)
+  // const quizId = await  QuizRepository.getQuizId(pQuiz)
   // console.log("quiz servis",createdQuiz)
   return await createdQuiz
 };
