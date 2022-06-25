@@ -16,16 +16,6 @@ const getQuestion = async (pId) => {
 };
 
 const createQuestion = async (pQuestion) => {
-  // console.log(pQuestion,"soru bu")
-  // const currentQuiz = await QuizRepository.getQuiz("20") 
-  // console.log("currentQuiz",currentQuiz)
-  // const createdQuestion = await QuestionRepository.createQuestion(pQuestion);
-  // currentQuiz.addQuestion(createdQuestion)
-  // return await createdQuestion
-  // return await QuestionRepository.createQuestion(pQuestion);
-  
-
-////yeni ama olmayan
   console.log(pQuestion,"soru bu")
   const currentQuiz = await QuizRepository.getQuiz(pQuestion.QuizId) 
   // console.log("currentQuiz",currentQuiz)
@@ -33,8 +23,6 @@ const createQuestion = async (pQuestion) => {
   console.log("craeted question, ",createdQuestion ,"+ current quiz" , currentQuiz)
   currentQuiz.addQuestion(createdQuestion)
   return await createdQuestion
-
-
 };
 
 const updateQuestion = async (pId, pQuestion) => {
@@ -44,8 +32,6 @@ const updateQuestion = async (pId, pQuestion) => {
 const deleteQuestion = async (pId) => {
   await QuestionRepository.deleteQuestion(pId);
 };
-
-
 
 export default {
   getQuestionList,
