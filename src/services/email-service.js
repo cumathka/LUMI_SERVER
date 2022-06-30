@@ -5,15 +5,15 @@ const emailTransporter = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-        user: "halilkom180@gmail.com",
-        pass: "LUMIMAILSIFRESI"
+        user: process.env.DB_EMAIL,
+        pass: process.env.DB_PASS
     }
 });
 
 export async function send(pEmail, pTitle, pMessage){
 console.log(pEmail,"bu maile gitmeil")
     const emailOptions = {
-        from: 'lumi_hicoders@zohomail.eu',
+        from: process.env.DB_LUMIMAIL,
         to: pEmail,
         subject: pTitle,
         html: pMessage,
