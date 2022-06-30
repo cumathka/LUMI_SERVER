@@ -10,17 +10,6 @@ const emailTransporter = nodemailer.createTransport({
     }
 });
 
-
-// const emailTransporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//         // not forget to adjust less secure app property 
-//         // visit the page https://www.google.com/settings/security/lesssecureapps
-//         user: 'hicoders.smtp@gmail.com', 
-//         pass:''
-//     }
-// });
-
 export async function send(pEmail, pTitle, pMessage){
 console.log(pEmail,"bu maile gitmeil")
     const emailOptions = {
@@ -38,9 +27,6 @@ console.log(pEmail,"bu maile gitmeil")
             console.log(info)
     })
 }
-
-
-
 
 emailTransporter.verify(function (error, success) {
     if (error) {
